@@ -12,11 +12,19 @@
     <div class="register-form">
         <h1>Registro</h1>
         <form action="register" method="post">
-            <label>Ingrese su nombre de usuario</label>
-            <input type="text" name="user" required>
+            <label for="usuario">Ingrese su nombre de usuario</label>
+            <input type="text" name="usuario" required>
 
-            <label>Ingrese su contraseña</label>
-            <input type="password" name="pass" required>
+            <label for="nombre">Ingrese su nombre</label>
+            <input type="text" name="nombre" required>
+
+            <label for="contraseña">Ingrese su contraseña</label>
+            <input type="password" name="contraseña" required>
+
+            <label for="rol">Seleccione un rol</label>
+            <select name="rol" id="rol" class="select-css">
+                <option value="admin" selected>Administrador</option>
+                <option value="data entry" selected>Data Entry</option>
 
             <div style="display: inline;">
                 <a href="/" class="btn-cancel">Cancelar</a><input type="submit" class="btn-save" value="Enviar">
@@ -25,5 +33,20 @@
         </form>
     </div>
     
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <% if(typeof alert != "undefined") { %>
+        <script>
+            Swal.fire({
+                title:"<%= alertTitle%>",
+                text:"<%= alertMessage%>",
+                icon:"<%= alertIcon%>",
+                showConfirmButton: <%= showConfirmButton %> ,
+                timer: <%= timer %>
+            }).then(()=>{
+                window.location="/<%= ruta %>"
+            })
+        </script>
+    <% } %>
 </body>
 </html>
